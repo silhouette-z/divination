@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ASUS/Desktop/net/MyApplication/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/ASUS/Desktop/net/MyApplication/app/src/main/res/drawable/ic_xingzuo.xml" value="0.1" />
         <entry key="..\:/Users/ASUS/Desktop/net/MyApplication/app/src/main/res/layout/activity_main.xml" value="0.10144927536231885" />
-        <entry key="..\:/Users/ASUS/Desktop/net/MyApplication/app/src/main/res/layout/activity_splash.xml" value="0.15208333333333332" />
+        <entry key="..\:/Users/ASUS/Desktop/net/MyApplication/app/src/main/res/layout/activity_splash.xml" value="0.10666666666666667" />
       </map>
     </option>
   </component>
