@@ -4,46 +4,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawerLayout"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    >
+<!--    暂时不要toolbar-->
+<!--    <FrameLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
 
-        <androidx.appcompat.widget.Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/cardview_dark_background"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
-    </FrameLayout>
+<!--        <androidx.appcompat.widget.Toolbar-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="?attr/actionBarSize"-->
+<!--            android:background="@color/cardview_dark_background"-->
+<!--            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
+<!--            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>-->
+<!--    </FrameLayout>-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recyclerView"/>
     
     <com.google.android.material.navigation.NavigationView
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="match_parent"
         android:id="@+id/navView"
         app:menu="@menu/nav_menu"
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_header"/>
 
-
-
-
-
 </androidx.drawerlayout.widget.DrawerLayout>
-<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    android:id="@+id/screen_2"-->
-<!--    android:src="@drawable/screen1"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent">-->
 
-<!--    <androidx.appcompat.widget.Toolbar-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="?attr/actionBarSize"-->
-<!--        android:background="@color/design_default_color_primary_dark"-->
-<!--        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
-<!--        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>-->
-
-
-<!--</RelativeLayout>-->
 
