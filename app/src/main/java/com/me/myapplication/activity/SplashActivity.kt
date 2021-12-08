@@ -6,7 +6,10 @@ import android.os.Bundle
 import android.os.SystemClock
 import android.util.Log
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.recyclerview.widget.GridLayoutManager
 import com.me.myapplication.R
+import com.me.myapplication.activity.adapter.CardAdapter
+import com.me.myapplication.activity.model.CardItem
 import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity() {
@@ -38,6 +41,23 @@ class SplashActivity : AppCompatActivity() {
             }
                 true
         }
+        val cardList = initCards()
+
+        recyclerView.layoutManager = GridLayoutManager(this, 2)
+
+        recyclerView.adapter = CardAdapter(cardList)
+    }
+
+    /**
+     * 初始化功能列表
+     */
+
+    fun initCards() :List<CardItem>{
+        return listOf(
+            CardItem("每日运势", R.drawable.ic_animal1),
+            CardItem("摇一摇", R.drawable.ic_animal2),
+            CardItem("每日心情", R.drawable.ic_animal3),
+            CardItem("不知道", R.drawable.ic_animal4))
     }
 
     /**
