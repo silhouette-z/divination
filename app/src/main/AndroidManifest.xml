@@ -2,15 +2,36 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.me.myapplication">
 
+
+    <!-- SD卡读取权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--    联网权限-->
+    <uses-permission android:name="android.permission.INTERNET" />
+
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_xingzuo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.App.Starting">
+
+        <activity
+            android:name=".activity.StartDailyTestActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MyApplication"/>
+
+        <activity
+            android:name=".activity.DailyTestActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MyApplication" />
+        <activity
+            android:name=".activity.SavePicActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MyApplication"/>
+
         <activity
             android:name=".activity.SettingActivity"
             android:exported="true"

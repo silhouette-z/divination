@@ -60,9 +60,7 @@ class SettingActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         when(requestCode) {
             CHOOSE_ALBUM -> {
-                var file = File("res.drawable.header")
-                val outputStream = FileOutputStream(file)
-                outputStream.write(data.getByteArrayExtra())
+
             }
         }
     }
