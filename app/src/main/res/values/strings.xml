@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Application</string>
+
+    <string name="title_1">今日运势</string>
+    <string name="title_2">明日运势</string>
+    <string name="title_3">本月运势</string>
+
+</resources>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.me.myapplication">
+
+
+    <!-- SD卡读取权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--    联网权限-->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_xingzuo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:requestLegacyExternalStorage="true"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.App.Starting">
+
+        <activity
+            android:name=".activity.StartDailyTestActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MyApplication"/>
+
+        <activity
+            android:name=".activity.DailyTestActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MyApplication" />
+        <activity
+            android:name=".activity.SavePicActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MyApplication"/>
+
+        <activity
+            android:name=".activity.VersionActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MyApplication"/>
+        <activity
+            android:name=".activity.PayActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MyApplication"/>
+        <!-- android:icon="@mipmap/ic_launcher" -->
+        <activity
+            android:name=".activity.SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
