@@ -11,6 +11,7 @@ import com.me.myapplication.R
 import com.me.myapplication.activity.adapter.CardAdapter
 import com.me.myapplication.activity.model.CardItem
 import kotlinx.android.synthetic.main.activity_splash.*
+import kotlinx.android.synthetic.main.nav_header.view.*
 
 class SplashActivity : AppCompatActivity() {
     companion object{
@@ -27,15 +28,19 @@ class SplashActivity : AppCompatActivity() {
         splashScreen.setKeepVisibleCondition { !isReady() }
 //        navView.setCheckedItem(R.id.nav)
         navView.setNavigationItemSelectedListener {
-            when(it.itemId) {
-                2131230734 -> {
+            when(it.title) {
+                "版本" -> {
                     drawerLayout.closeDrawers()
                     version()
                 }
 
-                2131231129 -> {
+                "打赏" -> {
                     drawerLayout.closeDrawers()
                     pay()
+                }
+                "设置" -> {
+                    drawerLayout.closeDrawers()
+                    setting()
                 }
                 else -> Log.d("aa", it.itemId.toString())
             }
@@ -46,6 +51,15 @@ class SplashActivity : AppCompatActivity() {
         recyclerView.layoutManager = GridLayoutManager(this, 2)
 
         recyclerView.adapter = CardAdapter(cardList)
+
+
+    }
+    /**
+     * 设置页
+     */
+    fun setting() {
+        val intent = Intent(this, SettingActivity::class.java)
+        startActivity(intent)
     }
 
     /**
