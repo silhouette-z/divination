@@ -7,6 +7,12 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!--    联网权限-->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+
 
 
     <application
@@ -16,19 +22,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/Theme.App.Starting">
 
         <activity
             android:name=".activity.StartDailyTestActivity"
             android:exported="true"
+            android:theme="@style/Theme.MyApplication" />
+        <activity
+            android:name=".activity.SavePicActivity"
+            android:exported="true"
             android:theme="@style/Theme.MyApplication"/>
 
         <activity
             android:name=".activity.DailyTestActivity"
-            android:exported="true"
-            android:theme="@style/Theme.MyApplication" />
-        <activity
-            android:name=".activity.SavePicActivity"
             android:exported="true"
             android:theme="@style/Theme.MyApplication"/>
 
