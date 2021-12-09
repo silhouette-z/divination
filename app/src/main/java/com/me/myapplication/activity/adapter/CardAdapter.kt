@@ -39,7 +39,7 @@ class CardAdapter(val cardList: List<CardItem>):RecyclerView.Adapter<CardAdapter
                     val intent = Intent(parent.context, VersionActivity::class.java)
                     startActivity(parent.context,intent, Bundle())
                 }
-                "不知道"-> {
+                "随机鸡汤"-> {
                     val intent = Intent(parent.context, SavePicActivity::class.java)
                     startActivity(parent.context,intent, Bundle())
                 }

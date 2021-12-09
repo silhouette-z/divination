@@ -24,11 +24,8 @@ import okhttp3.*
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
-import java.util.concurrent.TimeUnit
 
-//import java.util.Calendar;
 class SavePicActivity : AppCompatActivity() {
-
 
     private var layout_poster: LinearLayout? = null
     private var layout_save: LinearLayout? = null
@@ -45,11 +42,13 @@ class SavePicActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_save_pic)
         mcontext = applicationContext
+
         client = OkHttpClient
             .Builder()
             .build()
-        click()
+
         today_info = findViewById<View>(R.id.today_info) as TextView
+        click()
         layout_poster = findViewById<View>(R.id.layout_poster) as LinearLayout
         layout_save = findViewById<View>(R.id.layout_save) as LinearLayout
         layout_save!!.setOnClickListener { // 保存海报图片
@@ -163,10 +162,8 @@ class SavePicActivity : AppCompatActivity() {
             "http://api.lkblog.net/ws/api.php"
 
         request(url, object : Callback {
-
-
             override fun onFailure(call: Call, e: IOException) {
-                jt = e.message
+                today_info?.text = "您的鸡汤还在熬,稍后再来哦"
             }
 
             override fun onResponse(call: Call, response: Response) {

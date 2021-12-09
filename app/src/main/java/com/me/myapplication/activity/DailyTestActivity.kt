@@ -12,11 +12,9 @@ import androidx.viewpager.widget.ViewPager
 
 import com.google.gson.GsonBuilder
 import com.me.myapplication.R
-<<<<<<< HEAD
-=======
 import com.me.myapplication.activity.SettingActivity.Companion.CONSTELLATION
-import com.me.myapplication.activity.adapter.CardItemDetail
->>>>>>> ff33ff900e669b6b701f07d34f05eb8c4c1dd451
+
+
 import com.me.myapplication.activity.adapter.CardPagerAdapterDetail
 import com.me.myapplication.activity.bean.DailyAstro
 import com.me.myapplication.activity.interceptor.TimeConsumeInterceptor
@@ -45,14 +43,14 @@ class DailyTestActivity : AppCompatActivity() {
     var mcontext: Context? = null
     var cache: Cache? = null
 
-    val okhttpListener = object : EventListener() {}
+    private val okhttpListener = object : EventListener() {}
 
     val gson = GsonBuilder().create()
     var client: OkHttpClient? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-<<<<<<< HEAD
+
             setContentView(R.layout.activity_daily_test)
             textView = findViewById(R.id.today_info)
 //            str1 = "信息每天都有更新~\n每天都记得回来看看哦~"
@@ -60,9 +58,10 @@ class DailyTestActivity : AppCompatActivity() {
             str1 = "今天会开心~"
             str2 = "每天都是100分~"
 
-            astro = intent.extras!!.getString("astro")
+        astro = getSharedPreferences("setting", MODE_PRIVATE).getString(CONSTELLATION,"")
 
-            mcontext = applicationContext
+
+        mcontext = applicationContext
 
             client = OkHttpClient
                 .Builder()
@@ -83,42 +82,9 @@ class DailyTestActivity : AppCompatActivity() {
             mViewPager!!.setPageTransformer(false, mCardShadowTransformer)
             mViewPager!!.offscreenPageLimit = 3
         }
-=======
-        setContentView(R.layout.activity_daily_test)
 
-        //astro = intent.extras!!.getString("astro")
-        astro = getSharedPreferences("setting", MODE_PRIVATE).getString(CONSTELLATION,"")
 
-        mcontext = applicationContext
 
-        client = OkHttpClient
-            .Builder()
-            .addInterceptor(TimeConsumeInterceptor())
-            .eventListener(okhttpListener)
-            .build()
-
-        click()
-
-        str1 = "wssss"
-        str2 = "yes"
-        mViewPager = findViewById<View>(R.id.viewPager) as ViewPager
-        mCardAdapter = CardPagerAdapterDetail()
-        mCardAdapter!!.addCardItem(CardItemDetail(R.string.title_1, astro))
-        mCardAdapter!!.addCardItem(CardItemDetail(R.string.title_2, str1))
-        mCardAdapter!!.addCardItem(CardItemDetail(R.string.title_3, str3))
-        mCardShadowTransformer = ShadowTransformer(mViewPager, mCardAdapter)
-        mViewPager!!.adapter = mCardAdapter
-        mViewPager!!.setPageTransformer(false, mCardShadowTransformer)
-        mViewPager!!.offscreenPageLimit = 3
-    }
-
-    fun request(url: String, callback: Callback) {
-        val request: Request = Request.Builder()
-            .url(url)
-            .build()
-        client?.newCall(request)?.enqueue(callback)
-    }
->>>>>>> ff33ff900e669b6b701f07d34f05eb8c4c1dd451
 
         fun request(url: String, callback: Callback) {
             val request: Request = Request.Builder()
@@ -130,7 +96,7 @@ class DailyTestActivity : AppCompatActivity() {
 
         fun click() {
             val url =
-                "http://web.juhe.cn/constellation/getAll?consName=${astro}&type=today&key=994c7f89c7d8012fe43ae2cd2d736302"
+                "http://web.juhe.cn/constellation/getAll?consName=${astro}&type=today&key=360bd0afcae3e55a9ef02322cb5faa34"
 
             request(url, object : Callback {
 
