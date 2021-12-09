@@ -10,13 +10,17 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.me.myapplication.R
 import com.me.myapplication.activity.adapter.CardAdapter
 import com.me.myapplication.activity.model.CardItem
+import kotlinx.android.synthetic.main.activity_edit.*
 import kotlinx.android.synthetic.main.activity_splash.*
 import kotlinx.android.synthetic.main.nav_header.view.*
 
 class SplashActivity : AppCompatActivity() {
     companion object{
         // 开屏持续时间
-        const val WORK_DURATION = 1000L
+        const val WORK_DURATION = 2000L
+
+        const val FIRST_SETTING = 0
+
     }
     private val initTime = SystemClock.uptimeMillis()
 
@@ -26,7 +30,20 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
         // 开屏持续1s
         splashScreen.setKeepVisibleCondition { !isReady() }
-//        navView.setCheckedItem(R.id.nav)
+
+        val sp = getSharedPreferences("setting", MODE_PRIVATE)
+        val isFirst = sp.getBoolean("isFirst", true)
+        if(isFirst) {
+            while(!isReady()) {
+
+            }
+
+            val intent = Intent(this, SettingActivity::class.java)
+            startActivityForResult(intent, FIRST_SETTING)
+        }
+
+        Thread.sleep(1000)
+
         navView.setNavigationItemSelectedListener {
             when(it.title) {
                 "版本" -> {
@@ -53,6 +70,15 @@ class SplashActivity : AppCompatActivity() {
         recyclerView.adapter = CardAdapter(cardList)
 
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when(requestCode) {
+            FIRST_SETTING -> {
+
+            }
+        }
     }
     /**
      * 设置页
