@@ -4,6 +4,10 @@
     <!-- SD卡读取权限 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -18,6 +22,11 @@
             android:name=".activity.EditActivity"
             android:exported="true"
             android:theme="@style/Theme.MyApplication"/>
+        <activity
+            android:name=".activity.ShakeActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MyApplication" />
+
         <activity
             android:name=".activity.StartDailyTestActivity"
             android:exported="true"

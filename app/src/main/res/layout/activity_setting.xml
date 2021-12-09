@@ -33,6 +33,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:id="@+id/settingButton"
+        android:background="@drawable/ic_xingzuo"
         android:layout_gravity="center_horizontal" />
 
 

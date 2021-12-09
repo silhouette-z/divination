@@ -67,7 +67,7 @@ class SettingActivity : AppCompatActivity() {
                 val intent = Intent()
                 setResult(RESULT_OK, intent)
                 getSharedPreferences("setting", MODE_PRIVATE).edit()
-                    .putBoolean("isFirst", false)
+                    .putBoolean("isFirst", false).apply()
                 finish()
             }
         }
