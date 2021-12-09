@@ -4,12 +4,24 @@
     android:layout_height="match_parent"
     android:background="@drawable/img_background"
     android:fitsSystemWindows="true">
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_margin="35dp"
+        android:background="@color/backgroundwhite"
+        android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_margin="35dp"
+        android:id="@+id/today_info"
+        android:text="lalala"
+        />
+    </LinearLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="300dp"
         android:layout_gravity="bottom"
         android:clipToPadding="false"
         android:overScrollMode="never"

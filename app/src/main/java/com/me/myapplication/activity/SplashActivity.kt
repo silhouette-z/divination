@@ -1,22 +1,15 @@
 package com.me.myapplication.activity
 
-import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.SystemClock
 import android.util.Log
-import android.widget.ImageView
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
-import com.bumptech.glide.Glide
 import com.me.myapplication.R
 import com.me.myapplication.activity.adapter.CardAdapter
-import com.me.myapplication.activity.application.MyApplication
 import com.me.myapplication.activity.model.CardItem
-import com.me.myapplication.activity.viewModel.SettingViewModel
 import kotlinx.android.synthetic.main.activity_edit.*
 import kotlinx.android.synthetic.main.activity_setting.*
 import kotlinx.android.synthetic.main.activity_splash.*
@@ -109,8 +102,7 @@ class SplashActivity : AppCompatActivity() {
             CardItem("每日运势", R.drawable.ic_animal1),
             CardItem("摇一摇", R.drawable.ic_animal2),
             CardItem("每日心情", R.drawable.ic_animal3),
-            CardItem("不知道", R.drawable.ic_animal4)
-        )
+            CardItem("随机鸡汤", R.drawable.ic_animal4))
     }
 
     /**

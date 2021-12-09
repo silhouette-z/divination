@@ -12,6 +12,7 @@ import androidx.viewpager.widget.PagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 import com.me.myapplication.R;
+import com.me.myapplication.activity.model.CardItemDetail;
 
 public class CardPagerAdapterDetail extends PagerAdapter implements com.me.myapplication.activity.adapter.CardAdapterDetail {
 
