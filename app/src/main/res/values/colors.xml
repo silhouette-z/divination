@@ -14,4 +14,13 @@
     <color name="backgroundwhite">#80FFFFFF</color>
     <color name="grey">#696969</color>
 
+    <color name="black_overlay">#66000000</color>
+
+    <color name="blue1">#3d87ce</color>
+    <color name="blue2">#92CAFF</color>
+    <!--透明-->
+    <color name="transparent">#00000000</color>
+    <!--半透明-->
+    <color name="translucent">#30000000</color>
+
 </resources>
