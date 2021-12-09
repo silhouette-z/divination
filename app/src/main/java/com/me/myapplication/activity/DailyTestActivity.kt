@@ -10,6 +10,7 @@ import androidx.viewpager.widget.ViewPager
 
 import com.google.gson.GsonBuilder
 import com.me.myapplication.R
+import com.me.myapplication.activity.SettingActivity.Companion.CONSTELLATION
 import com.me.myapplication.activity.adapter.CardItemDetail
 import com.me.myapplication.activity.adapter.CardPagerAdapterDetail
 import com.me.myapplication.activity.bean.DailyAstro
@@ -54,7 +55,8 @@ class DailyTestActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_daily_test)
 
-        astro = intent.extras!!.getString("astro")
+        //astro = intent.extras!!.getString("astro")
+        astro = getSharedPreferences("setting", MODE_PRIVATE).getString(CONSTELLATION,"")
 
         mcontext = applicationContext
 
