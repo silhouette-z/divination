@@ -11,11 +11,12 @@ import androidx.core.content.ContextCompat.startActivity
 
 import androidx.recyclerview.widget.RecyclerView
 import com.me.myapplication.R
+import com.me.myapplication.activity.*
 import com.me.myapplication.activity.SavePicActivity
 import com.me.myapplication.activity.ShakeActivity
-import com.me.myapplication.activity.StartDailyTestActivity
+import com.me.myapplication.activity.DailyTestActivity
 
-import com.me.myapplication.activity.VersionActivity
+
 import com.me.myapplication.activity.model.CardItem
 
 
@@ -27,7 +28,7 @@ class CardAdapter(val cardList: List<CardItem>):RecyclerView.Adapter<CardAdapter
         viewHolder.itemView.setOnClickListener{
             when(viewHolder.name.text) {
                 "每日运势" -> {
-                    val intent = Intent(parent.context, StartDailyTestActivity::class.java)
+                    val intent = Intent(parent.context, DailyTestActivity::class.java)
                     startActivity(parent.context,intent, Bundle())
                 }
                 "摇一摇" -> {
