@@ -60,7 +60,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="10dp"
-                    android:text="jinriyunshifengxiang"
+
                     android:textColor="@android:color/black"
                     android:textSize="14sp" />
 

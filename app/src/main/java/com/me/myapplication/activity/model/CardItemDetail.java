@@ -1,4 +1,4 @@
-package com.me.myapplication.activity.adapter;
+package com.me.myapplication.activity.model;
 
 
 public class CardItemDetail {
