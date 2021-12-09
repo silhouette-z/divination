@@ -28,8 +28,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="摇动手机进行求签"
-            android:textSize="20dp"
+            android:text="摇动手机算上一卦"
+            android:textSize="18dp"
             />
 
     </LinearLayout>

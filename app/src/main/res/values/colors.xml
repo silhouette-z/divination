@@ -23,4 +23,7 @@
     <!--半透明-->
     <color name="translucent">#30000000</color>
 
+    <color name="brown1">#deb887</color>
+    <color name="brown2">#bb907c</color>
+    <color name="brown3">#ffefd5</color>
 </resources>
