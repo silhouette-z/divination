@@ -1,10 +1,13 @@
 package com.me.myapplication.activity
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.SystemClock
 import android.util.Log
+import androidx.core.app.ActivityCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.recyclerview.widget.GridLayoutManager
 import com.me.myapplication.R
@@ -123,6 +126,28 @@ class SplashActivity : AppCompatActivity() {
 
     fun isReady(): Boolean {
         return SystemClock.uptimeMillis() - initTime > WORK_DURATION
+    }
+
+    private fun requestPermission() {
+        val storagePermissions = arrayOf<String>(Manifest.permission.READ_EXTERNAL_STORAGE)
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(this, storagePermissions, 123)
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        for (i in permissions.indices) {
+            Log.d("permissions:", permissions[i] + "申请结果：" + grantResults[i])
+        }
     }
 
 

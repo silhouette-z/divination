@@ -1,13 +1,16 @@
 package com.me.myapplication.activity
 
+import android.Manifest
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.me.myapplication.R
@@ -20,6 +23,7 @@ class SettingActivity : AppCompatActivity() {
         const val CHOOSE_ALBUM = 1
         const val EDIT_NAME = 2
         const val EDIT_CONSTELLATION = 3
+        const val EDIT_HEADER = 4
 
         const val NAME = "name"
         const val CONSTELLATION = "constellation"
@@ -34,6 +38,7 @@ class SettingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
+        requestPermissions()
         viewModel = SettingViewModel(
             getSharedPreferences("setting", MODE_PRIVATE)!!.getString(NAME, "")!!,
             getSharedPreferences("setting", MODE_PRIVATE)!!.getString(CONSTELLATION, "")!!,
@@ -85,6 +90,38 @@ class SettingActivity : AppCompatActivity() {
 
     }
 
+    private fun requestPermissions() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+            != PackageManager.PERMISSION_GRANTED
+        ) {
+            // 申请一个（或多个）权限，并提供用于回调返回的获取码（用户定义）
+            ActivityCompat.requestPermissions(
+                this, arrayOf(
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+                ), 1
+            )
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            1 -> if (grantResults.isNotEmpty()
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED
+            ) {
+
+            } else {
+                Toast.makeText(this, "权限授予失败", Toast.LENGTH_LONG).show()
+                return
+            }
+            else -> {}
+        }
+    }
+
     fun updateSetting(text: String, attribute: String) {
         val editor = getSharedPreferences("setting", MODE_PRIVATE).edit()
         editor.putString(attribute, text)
@@ -105,13 +142,15 @@ class SettingActivity : AppCompatActivity() {
                             TODO()
                         }
                         CHOOSE_ALBUM -> {
-                            val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
-                            intent.addCategory(Intent.CATEGORY_OPENABLE)
-                            intent.type = "image/*"
-                            intent.setDataAndType(
-                                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                                "image/*"
-                            )
+//                            val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
+//                            intent.addCategory(Intent.CATEGORY_OPENABLE)
+//                            intent.type = "image/*"
+//                            intent.setDataAndType(
+//                                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+//                                "image/*"
+//                            )
+//                            startActivityForResult(intent, CHOOSE_ALBUM)
+                            var intent = Intent(context, AlbumActivity::class.java)
                             startActivityForResult(intent, CHOOSE_ALBUM)
                         }
                     }
@@ -119,12 +158,13 @@ class SettingActivity : AppCompatActivity() {
             }).create()
     }
 
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
         super.onActivityResult(requestCode, resultCode, intent)
         if(resultCode == RESULT_OK) {
             when (requestCode) {
                 CHOOSE_ALBUM -> {
-                    val headerString = intent!!.data?.toString()
+                    val headerString = intent?.extras?.get("data")?.toString()
                     updateSetting(headerString!!, HEADER)
                     viewModel.changeHeader(this)
                 }
