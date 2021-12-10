@@ -4,7 +4,7 @@
 
         tools:ignore="MissingDefaultResource">
         <solid android:color="#99FFFFFF" />
-        <stroke android:width="1dip" android:color="#fefefe" />
+        <stroke android:width="1dip" android:color="#000000" />
         <corners android:radius="20dp"/>
         <padding android:bottom="10dp"
             android:left="10dp"

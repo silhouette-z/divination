@@ -3,23 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center">
+
 
     <LinearLayout
         android:id="@+id/layout_poster"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
-        android:background="@drawable/img_background"
+        android:background="@drawable/screen_0"
         android:orientation="vertical">
 
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="450dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginRight="40dp"
+            android:layout_height="match_parent"
+            android:layout_margin="60dp"
             android:background="@color/backgroundwhite"
             android:scaleType="fitXY">
 
@@ -36,19 +36,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="40dp"
                     android:layout_marginBottom="40dp"
                     android:text="今日鸡汤分享"
                     android:textColor="@android:color/black"
-                    android:textSize="17sp" />
+                    android:textSize="22sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="30dp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginRight="30dp"
                     android:text="如果神没有帮助你，说明神相信你的能力。"
                     android:textColor="@android:color/black"
                     android:textSize="14sp" />
@@ -57,8 +57,9 @@
                     android:id="@+id/today_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="30dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginRight="30dp"
                     android:layout_marginBottom="10dp"
 
                     android:textColor="@android:color/black"
@@ -81,12 +82,22 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:textColor="@color/grey"
-                android:text="\@今天出门吗" />
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="220dp"
+                android:text="\@今天出门吗"
+                android:textColor="@color/grey" />
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="30dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_animal4" />
 
         </RelativeLayout>
+
 
     </LinearLayout>
 
@@ -102,8 +113,8 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:src="@drawable/download" />
 
         <TextView
@@ -115,5 +126,14 @@
             android:text="点击此处生成海报" />
 
     </LinearLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="false"
+        app:lottie_rawRes="@raw/loading_success" />
 
 </RelativeLayout>

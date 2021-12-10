@@ -20,7 +20,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/nameTextView"
         android:gravity="center_horizontal"
-        android:textSize="20sp"
+        android:layout_marginTop="30dp"
+        android:textSize="22sp"
         android:text="昵称"/>
     <TextView
         android:layout_width="match_parent"
@@ -28,11 +29,12 @@
         android:id="@+id/constellationTextView"
         android:gravity="center_horizontal"
         android:text="星座"
-        android:textSize="20sp"/>
+        android:textSize="22sp"/>
 
     <Button
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="30dp"
         android:id="@+id/settingButton"
         android:background="@drawable/ic_xingzuo"
         android:layout_gravity="center_horizontal" />
