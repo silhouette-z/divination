@@ -1,6 +1,8 @@
 package com.me.myapplication.activity
 
 import android.Manifest
+import android.animation.Animator
+import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -9,12 +11,16 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
+import android.provider.MediaStore
 import android.view.View
+import android.webkit.RenderProcessGoneDetail
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import com.google.gson.GsonBuilder
 import com.me.myapplication.R
 import com.me.myapplication.activity.bean.DailyAstro
@@ -24,6 +30,20 @@ import okhttp3.*
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
+import com.airbnb.lottie.LottieAnimationView
+import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
+import android.animation.AnimatorSet
+import android.view.animation.CycleInterpolator
+import android.view.animation.LinearInterpolator
+import androidx.dynamicanimation.animation.DynamicAnimation
+import java.lang.Thread.sleep
+import java.util.concurrent.Delayed
+import android.animation.AnimatorListenerAdapter
+
+
+
+
 
 class SavePicActivity : AppCompatActivity() {
 
@@ -31,7 +51,9 @@ class SavePicActivity : AppCompatActivity() {
     private var layout_save: LinearLayout? = null
     private var today_info: TextView? = null
     private var mBitmap: Bitmap? = null
-    private var jt: String? = null
+
+    private var animationView: LottieAnimationView? = null
+
 
     var mcontext: Context? = null
     val gson = GsonBuilder().create()
@@ -41,6 +63,11 @@ class SavePicActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_save_pic)
+
+        animationView = findViewById(R.id.animation_view)
+        animationView?.visibility = View.GONE
+
+
         mcontext = applicationContext
 
         client = OkHttpClient
@@ -53,12 +80,36 @@ class SavePicActivity : AppCompatActivity() {
         layout_save = findViewById<View>(R.id.layout_save) as LinearLayout
         layout_save!!.setOnClickListener { // 保存海报图片
             savePoster()
+            animationStart()
+//            animationView?.visibility = View.GONE
         }
     }
 
-    /**
-     * 保存海报图片
-     */
+    @SuppressLint("ObjectAnimatorBinding")
+    private fun animationStart() {
+        animationView?.visibility = View.VISIBLE
+        animationView?.playAnimation()
+
+//        if (animationView?.isAnimating == false)
+//            animationView?.visibility = View.GONE
+//        var animatorListener = object AnimatorListener(){
+            var mAnimatorListener = object : Animator.AnimatorListener {
+                override fun onAnimationStart(animation: Animator?) {
+                }
+                override fun onAnimationEnd(animation: Animator) {
+                    animationView?.visibility = View.GONE
+                }
+                override fun onAnimationCancel(animation: Animator) {
+
+                }
+                override fun onAnimationRepeat(animation: Animator) {}
+            }
+//        }
+        animationView?.addAnimatorListener(mAnimatorListener)
+
+    }
+
+    //保存海报图片
     private fun savePoster() {
 
         // 1.View截图
@@ -80,7 +131,7 @@ class SavePicActivity : AppCompatActivity() {
             }
         }
     }
-
+    //获取权限
     private fun requestPermissions() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
             != PackageManager.PERMISSION_GRANTED
@@ -115,20 +166,21 @@ class SavePicActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * 保存一张Bitmap图到本地
-     */
+    //保存一张Bitmap图到本地
     private fun saveToLocal(bitmap: Bitmap?) {
         try {
-            val appDir = File(Environment.getExternalStorageDirectory(), "Poster")
+            val appDir = File(Environment.getExternalStorageDirectory(),"Poster")
+//            val appDir = mcontext?.filesDir
+//            val appDir = File(mcontext?.filesDir,"Poster")
             // 没有目录创建目录
-            if (!appDir.exists()) {
-                appDir.mkdir()
+            if (!appDir?.exists()!!) {
+                appDir?.mkdir()
             }
             val file = File(appDir, "view_" + System.currentTimeMillis() + ".jpg")
             val out: FileOutputStream
             try {
                 out = FileOutputStream(file)
+//                val resolver = applicationContext.contentResolver
                 if (bitmap!!.compress(Bitmap.CompressFormat.PNG, 90, out)) {
                     out.flush()
                     out.close()
@@ -180,4 +232,22 @@ class SavePicActivity : AppCompatActivity() {
             }
         })
     }
+
+//    private fun initAnimatorListener() {
+//        var mAnimatorListener = object : Animator.AnimatorListener {
+//            override fun onAnimationStart(animation: Animator?) {
+//
+//            }
+//
+//            override fun onAnimationEnd(animation: Animator) {
+//
+//            }
+//
+//            override fun onAnimationCancel(animation: Animator) {
+//
+//            }
+//
+//            override fun onAnimationRepeat(animation: Animator) {}
+//        }
+//    }
 }

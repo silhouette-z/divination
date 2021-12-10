@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.PayActivity"
+    android:background="@drawable/screen_0"
     android:orientation="vertical">
 
     <ImageView
