@@ -8,8 +8,10 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.me.myapplication.R
+import com.me.myapplication.activity.viewModel.SettingViewModel
 import kotlinx.android.synthetic.main.activity_setting.*
 
 class SettingActivity : AppCompatActivity() {
@@ -21,23 +23,41 @@ class SettingActivity : AppCompatActivity() {
 
         const val NAME = "name"
         const val CONSTELLATION = "constellation"
-        //const val HEADER_FILENAME = "/header.png"
-
+        const val HEADER = "header"
     }
 
     var dialog: AlertDialog? = null
     var context = this
+    lateinit var viewModel: SettingViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
+        viewModel = SettingViewModel(
+            getSharedPreferences("setting", MODE_PRIVATE)!!.getString(NAME, "")!!,
+            getSharedPreferences("setting", MODE_PRIVATE)!!.getString(CONSTELLATION, "")!!,
+            getSharedPreferences("setting", MODE_PRIVATE)!!.getString(HEADER, R.drawable.header.toString())!!
+        )
 
+        viewModel.name.observe(this, Observer { name ->
+            nameTextView.text = name
+        })
+
+        viewModel.constellation.observe(this, Observer { constellation ->
+            constellationTextView.text = constellation
+        })
+
+        viewModel.header.observe(this, Observer { header->
+           Glide.with(this).load(header).error(R.drawable.header).into(headerImage)
+        })
 
         headerImage.setOnClickListener {
             initAlertDialog()
             dialog?.show()
             true
         }
+
         nameTextView.setOnClickListener {
             var intent = Intent(this, EditActivity::class.java)
             startActivityForResult(intent, EDIT_NAME)
@@ -48,21 +68,12 @@ class SettingActivity : AppCompatActivity() {
             var intent = Intent(this, EditActivity::class.java)
             startActivityForResult(intent, EDIT_CONSTELLATION)
         }
-        constellationTextView.text = "星座： ${
-            getSharedPreferences("setting", MODE_PRIVATE)!!
-                .getString(CONSTELLATION, "")
-        }"
-
-        nameTextView.text = "昵称： ${
-            getSharedPreferences("setting", MODE_PRIVATE)!!
-                .getString(NAME, "")
-        }"
 
         settingButton.setOnClickListener {
             val sp = getSharedPreferences("setting", MODE_PRIVATE)
             val string = sp.getString(CONSTELLATION, "")
-            if(string == "") {
-                Toast.makeText(this,"请填写星座",Toast.LENGTH_SHORT).show()
+            if (string == "") {
+                Toast.makeText(this, "请填写星座", Toast.LENGTH_SHORT).show()
             } else {
                 val intent = Intent()
                 setResult(RESULT_OK, intent)
@@ -76,8 +87,6 @@ class SettingActivity : AppCompatActivity() {
 
     fun updateSetting(text: String, attribute: String) {
         val editor = getSharedPreferences("setting", MODE_PRIVATE).edit()
-
-
         editor.putString(attribute, text)
         editor.commit()
         val sp = getSharedPreferences("setting", MODE_PRIVATE)
@@ -93,7 +102,7 @@ class SettingActivity : AppCompatActivity() {
                 override fun onClick(dialog: DialogInterface?, which: Int) {
                     when (which) {
                         TAKE_PHOTO -> {
-
+                            TODO()
                         }
                         CHOOSE_ALBUM -> {
                             val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
@@ -114,24 +123,19 @@ class SettingActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, intent)
         when (requestCode) {
             CHOOSE_ALBUM -> {
-                Log.d("uri", intent!!.data.toString())
-                Glide.with(context).load(intent.data).into(headerImage)
+                val headerString = intent!!.data?.toString()
+                updateSetting(headerString!!, HEADER)
+                viewModel.changeHeader(this)
             }
             EDIT_NAME -> {
                 val text = intent?.extras?.get("data")?.toString()
                 updateSetting(text!!, NAME)
-                val string = getSharedPreferences("setting", MODE_PRIVATE)!!
-                    .getString(NAME, "")
-
-                nameTextView.text = "昵称:${string}"
+                viewModel.changeName(this)
             }
             EDIT_CONSTELLATION -> {
                 val text = intent?.extras?.get("data")?.toString()
                 updateSetting(text!!, CONSTELLATION)
-                constellationTextView.text = "星座： ${
-                    getSharedPreferences("setting", MODE_PRIVATE)!!
-                        .getString(CONSTELLATION, "")
-                }"
+                viewModel.changeConstellation(this)
             }
         }
     }

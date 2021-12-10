@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/img_background"
     tools:context=".activity.ShakeActivity">
 
 
@@ -28,8 +29,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="摇动手机算上一卦"
+            android:text="摇动手机 算上一卦"
             android:textSize="18dp"
+            />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_xingzuo"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp"
             />
 
     </LinearLayout>
