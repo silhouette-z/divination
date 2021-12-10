@@ -10,11 +10,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.me.myapplication.R
 import com.me.myapplication.activity.adapter.CardAdapter
 import com.me.myapplication.activity.model.CardItem
-import kotlinx.android.synthetic.main.activity_edit.*
-import kotlinx.android.synthetic.main.activity_setting.*
 import kotlinx.android.synthetic.main.activity_splash.*
-import kotlinx.android.synthetic.main.nav_header.*
-import kotlinx.android.synthetic.main.nav_header.view.*
+
 
 class SplashActivity : AppCompatActivity() {
     companion object {
@@ -78,9 +75,11 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        when (requestCode) {
-            FIRST_SETTING -> {
+        if(resultCode == RESULT_OK) {
+            when (requestCode) {
+                FIRST_SETTING -> {
 
+                }
             }
         }
     }

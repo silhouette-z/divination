@@ -121,21 +121,23 @@ class SettingActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
         super.onActivityResult(requestCode, resultCode, intent)
-        when (requestCode) {
-            CHOOSE_ALBUM -> {
-                val headerString = intent!!.data?.toString()
-                updateSetting(headerString!!, HEADER)
-                viewModel.changeHeader(this)
-            }
-            EDIT_NAME -> {
-                val text = intent?.extras?.get("data")?.toString()
-                updateSetting(text!!, NAME)
-                viewModel.changeName(this)
-            }
-            EDIT_CONSTELLATION -> {
-                val text = intent?.extras?.get("data")?.toString()
-                updateSetting(text!!, CONSTELLATION)
-                viewModel.changeConstellation(this)
+        if(resultCode == RESULT_OK) {
+            when (requestCode) {
+                CHOOSE_ALBUM -> {
+                    val headerString = intent!!.data?.toString()
+                    updateSetting(headerString!!, HEADER)
+                    viewModel.changeHeader(this)
+                }
+                EDIT_NAME -> {
+                    val text = intent?.extras?.get("data")?.toString()
+                    updateSetting(text!!, NAME)
+                    viewModel.changeName(this)
+                }
+                EDIT_CONSTELLATION -> {
+                    val text = intent?.extras?.get("data")?.toString()
+                    updateSetting(text!!, CONSTELLATION)
+                    viewModel.changeConstellation(this)
+                }
             }
         }
     }
