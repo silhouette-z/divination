@@ -11,10 +11,13 @@ import androidx.core.content.ContextCompat.startActivity
 
 import androidx.recyclerview.widget.RecyclerView
 import com.me.myapplication.R
+
 import com.me.myapplication.activity.SavePicActivity
 import com.me.myapplication.activity.ShakeActivity
 import com.me.myapplication.activity.DailyTestActivity
 import com.me.myapplication.activity.VersionActivity
+import com.me.myapplication.activity.*
+
 
 
 import com.me.myapplication.activity.model.CardItem
@@ -36,7 +39,9 @@ class CardAdapter(val cardList: List<CardItem>):RecyclerView.Adapter<CardAdapter
                     startActivity(parent.context,intent, Bundle())
                 }
                 "每日心情"-> {
-                    val intent = Intent(parent.context, VersionActivity::class.java)
+
+                    val intent = Intent(parent.context, FaceCompareActivity::class.java)
+
                     startActivity(parent.context,intent, Bundle())
                 }
                 "随机鸡汤"-> {
