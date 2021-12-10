@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/img_background"
     tools:context=".activity.ShakeActivity">
 
 
@@ -20,6 +21,7 @@
             android:layout_width="350sp"
             android:layout_height="350sp"
             android:id="@+id/bagua_image"
+            android:src="@drawable/bagua"
             android:layout_marginBottom="35dp"
             />
 
