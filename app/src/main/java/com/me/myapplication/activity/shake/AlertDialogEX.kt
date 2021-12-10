@@ -85,7 +85,11 @@ fun Context.showResultDialog() {
 
 fun Context.closeResultDialog(){
     if (mAlertDialog?.show() != null){
-        mAlertDialog!!.dismiss()
+        try {
+            mAlertDialog!!.dismiss()
+        }catch (e: Exception){
+            mAlertDialog = null
+        }
     }
 }
 

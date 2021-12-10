@@ -21,7 +21,6 @@
             android:layout_width="350sp"
             android:layout_height="350sp"
             android:id="@+id/bagua_image"
-            android:src="@drawable/bagua"
             android:layout_marginBottom="35dp"
             />
 
