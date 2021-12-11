@@ -36,12 +36,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="25dp"
                     android:layout_marginBottom="40dp"
                     android:text="今日鸡汤分享"
                     android:textColor="@android:color/black"
-                    android:textSize="22sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -50,7 +50,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="30dp"
                     android:text="如果神没有帮助你，说明神相信你的能力。"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/darker_gray"
                     android:textSize="14sp" />
 
                 <TextView
@@ -61,7 +61,6 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginBottom="10dp"
-
                     android:textColor="@android:color/black"
                     android:textSize="14sp" />
 
@@ -87,19 +86,45 @@
                 android:text="\@今天出门吗"
                 android:textColor="@color/grey" />
 
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="30dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/ic_animal4" />
+<!--            <ImageView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentLeft="true"-->
+<!--                android:layout_alignParentBottom="true"-->
+<!--                android:layout_marginBottom="30dp"-->
+<!--                android:scaleType="fitXY"-->
+<!--                android:src="@drawable/ic_animal4" />-->
+
+<!--            <ImageView-->
+<!--                android:layout_width="150dp"-->
+<!--                android:layout_height="100dp"-->
+<!--                android:layout_alignParentRight="true"-->
+<!--                android:layout_alignParentBottom="true"-->
+<!--                android:layout_marginTop="-5dp"-->
+<!--                android:layout_marginBottom="20dp"-->
+<!--                android:src="@drawable/grass" />-->
 
         </RelativeLayout>
-
-
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_animal4" />
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/grass" />
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/layout_save"
@@ -108,22 +133,22 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="150dp"
         android:gravity="center"
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@drawable/download" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:textColor="@color/grey"
-            android:text="点击此处生成海报" />
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="点击此处生成海报"
+            android:textColor="@color/grey" />
 
     </LinearLayout>
 

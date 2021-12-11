@@ -1,20 +1,24 @@
 package com.me.myapplication.activity
 
-import android.content.Intent
+import android.annotation.SuppressLint
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.IBinder
 import android.os.SystemClock
+
 import android.util.Log
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.recyclerview.widget.GridLayoutManager
 import com.me.myapplication.R
 import com.me.myapplication.activity.adapter.CardAdapter
 import com.me.myapplication.activity.model.CardItem
-import kotlinx.android.synthetic.main.activity_edit.*
-import kotlinx.android.synthetic.main.activity_setting.*
+
 import kotlinx.android.synthetic.main.activity_splash.*
-import kotlinx.android.synthetic.main.nav_header.*
-import kotlinx.android.synthetic.main.nav_header.view.*
+
+
 
 class SplashActivity : AppCompatActivity() {
     companion object {
@@ -24,12 +28,26 @@ class SplashActivity : AppCompatActivity() {
         const val FIRST_SETTING = 0
     }
 
+
     val initTime = SystemClock.uptimeMillis()
 
+
+    @SuppressLint("ShortAlarm")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val splashScreen = installSplashScreen()
         setContentView(R.layout.activity_splash)
+
+        val intent = Intent(this, AutoReceiver::class.java)
+        intent.action = "VIDEO_TIMER"
+        val sender: PendingIntent = PendingIntent.getBroadcast(this,0,intent,0)
+
+        val am = getSystemService(ALARM_SERVICE) as AlarmManager
+        am.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+            SystemClock.elapsedRealtime(),10*1000,sender)
+
+
+
         // 开屏持续1s
         splashScreen.setKeepVisibleCondition { !isReady() }
 
@@ -125,6 +143,5 @@ class SplashActivity : AppCompatActivity() {
     fun isReady(): Boolean {
         return SystemClock.uptimeMillis() - initTime > WORK_DURATION
     }
-
 
 }

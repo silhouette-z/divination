@@ -19,8 +19,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.view.isGone
-import androidx.core.view.isVisible
+
 import com.google.gson.GsonBuilder
 import com.me.myapplication.R
 import com.me.myapplication.activity.bean.DailyAstro
@@ -31,16 +30,8 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import com.airbnb.lottie.LottieAnimationView
-import android.animation.ObjectAnimator
-import android.annotation.SuppressLint
-import android.animation.AnimatorSet
-import android.view.animation.CycleInterpolator
-import android.view.animation.LinearInterpolator
-import androidx.dynamicanimation.animation.DynamicAnimation
-import java.lang.Thread.sleep
-import java.util.concurrent.Delayed
-import android.animation.AnimatorListenerAdapter
 
+import android.annotation.SuppressLint
 
 
 
@@ -233,21 +224,4 @@ class SavePicActivity : AppCompatActivity() {
         })
     }
 
-//    private fun initAnimatorListener() {
-//        var mAnimatorListener = object : Animator.AnimatorListener {
-//            override fun onAnimationStart(animation: Animator?) {
-//
-//            }
-//
-//            override fun onAnimationEnd(animation: Animator) {
-//
-//            }
-//
-//            override fun onAnimationCancel(animation: Animator) {
-//
-//            }
-//
-//            override fun onAnimationRepeat(animation: Animator) {}
-//        }
-//    }
 }
