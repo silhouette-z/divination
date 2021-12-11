@@ -67,7 +67,8 @@ class FaceCompareActivity : AppCompatActivity() {
 //            loadImg1(secondImageFirst)
         }
 
-        var firstName = "林"
+        var firstName = "林十一的人脸比较程序"
+
         btAdd.setOnClickListener {
 //            showInputDialog("输入姓名") {
 //                firstName = it.trim()
@@ -80,7 +81,8 @@ class FaceCompareActivity : AppCompatActivity() {
             if (firstName!!.isNotBlank() && currentFeature.isNotEmpty() && currentImg.isNotBlank()) {
                 val feature = FaceFeature(firstName!!, currentFeature, currentImg)
                 mmkv.encode(firstName, feature)
-                toast("确认成功！: $firstName $currentImg")
+//                toast("确认成功！: $firstName $currentImg")
+                toast("确认成功！请选择一张要比较的图片:)")
 //                firstName?.let { it1 -> search(currentFeature, it1) }
             }
         }
@@ -127,7 +129,8 @@ class FaceCompareActivity : AppCompatActivity() {
             }
 
             if (result.faceCount > 1) {
-                toast("检测到多个人脸，仅提取第一个人脸特征")
+//                toast("检测到多个人脸，仅提取第一个人脸特征")
+                toast("好像有很多个人呢，那只能对比第一个人辣QAQ")
             }
 
             FaceManger.getFeature(result.faces.first())?.let { feature ->
@@ -136,8 +139,8 @@ class FaceCompareActivity : AppCompatActivity() {
                 btAdd.isClickable = true
                 println("提取特征成功:$currentImg")
                 println(currentFeature.asList())
-                toast("提取特征成功!")
-
+//                toast("提取特征成功!")
+                toast("图片加载成功！")
 //                search(currentFeature)
             }
         }
@@ -163,10 +166,16 @@ class FaceCompareActivity : AppCompatActivity() {
 //            searchList.sortBy { it.distance }
             searchList.sortBy { it.feature.name == name }
 
-            val bast = searchList.last()
-//            toast("相似度:${bast.feature.name} ${bast.similarity}")
-//            toast("相似度: ${bast.similarity }%")
-            similarity_result.text = "相似度: ${bast.similarity }%"
+            val best = searchList.last()
+//            toast("相似度:${best.feature.name} ${bast.similarity}")
+//            toast("相似度: ${best.similarity }%")
+//            similarity_result.text = "相似度: ${best.similarity }%"
+            var str :String = String.format("%.2f",best.similarity)
+            str = "你们的相似度为：" + str + "%"
+            if(best.distance < 1.1){
+                str = str + "\n你们真的不是同一个人咩？"
+            }
+            similarity_result.text = str
 //            showSearchResult(searchList)
         }
     }

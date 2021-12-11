@@ -7,14 +7,24 @@
     android:background="@drawable/img_background"
     tools:context=".activity.FaceCompareActivity">
 
+    <ImageView
+        android:id="@+id/xingzuo_in_facecompare"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_xingzuo"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="45dp"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/xingzuo_in_facecompare"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="15dp"
         android:id="@+id/two_image"
         >
         <com.github.chrisbanes.photoview.PhotoView
@@ -45,56 +55,67 @@
     <LinearLayout
         android:id="@+id/four_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="30dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintTop_toBottomOf = "@+id/two_image"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         >
         <Button
             android:id="@+id/btLocal"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_weight="1"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:text="选择图片1"
+            android:textColor="@color/white"
+            android:text="选择第一张照片"
+            android:background="@drawable/selector_bt_2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/two_image" />
 
         <Button
-            android:id="@+id/btLink"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:text="选择图片2"
-            app:layout_constraintStart_toEndOf="@+id/btLocal"
-            app:layout_constraintTop_toTopOf="@+id/btLocal" />
-
-        <Button
+            android:layout_marginTop="5dp"
             android:id="@+id/btAdd"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_weight="1"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:text="确认图片1"
+            android:textColor="@color/white"
+            android:text="确认第一张照片"
+            android:background="@drawable/selector_bt_2"
             app:layout_constraintStart_toEndOf="@+id/btLink"
             app:layout_constraintTop_toTopOf="@+id/btLocal" />
 
         <Button
-            android:id="@+id/btSearch"
-            android:layout_width="0dp"
+            android:layout_marginTop="5dp"
+            android:id="@+id/btLink"
+            android:layout_width="match_parent"
             android:layout_weight="1"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:text="比较"
+            android:textColor="@color/white"
+            android:text="选择第二张照片"
+            android:background="@drawable/selector_bt_2"
+            app:layout_constraintStart_toEndOf="@+id/btLocal"
+            app:layout_constraintTop_toTopOf="@+id/btLocal" />
+
+        <Button
+            android:layout_marginTop="5dp"
+            android:id="@+id/btSearch"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:textColor="@color/white"
+            android:text="比较一下  你就知道"
+            android:background="@drawable/selector_bt_2"
             app:layout_constraintStart_toEndOf="@+id/btAdd"
             app:layout_constraintTop_toTopOf="@+id/btAdd" />
     </LinearLayout>
@@ -104,20 +125,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/four_button"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:gravity="center"
         android:padding="5dp"
         android:textSize="20dp"
-        android:text="相似度结果"
+        android:text="    算一算  几分像？"
         />
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:src="@drawable/ic_xingzuo"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/similarity_result"
-        />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
