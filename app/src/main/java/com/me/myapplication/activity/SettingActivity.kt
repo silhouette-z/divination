@@ -1,6 +1,7 @@
 package com.me.myapplication.activity
 
 import android.Manifest
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -38,7 +39,48 @@ class SettingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
+
+        initViewModel()
         requestPermissions()
+
+        headerImage.setOnClickListener {
+            initAlertDialog()
+            dialog?.show()
+            true
+        }
+
+        nameTextView.setOnClickListener {
+            var intent = Intent(this, EditActivity::class.java)
+            startActivityForResult(intent, EDIT_NAME)
+        }
+
+        constellationTextView.setOnClickListener {
+            var intent = Intent(this, EditActivity::class.java)
+            startActivityForResult(intent, EDIT_CONSTELLATION)
+        }
+
+        settingButton.setOnClickListener {
+            // 查看是否填写星座，星座为必填
+            val sp = getSharedPreferences("setting", MODE_PRIVATE)
+            val string = sp.getString(CONSTELLATION, "")
+            if (string == "") {
+                Toast.makeText(this, "请填写星座", Toast.LENGTH_SHORT).show()
+            // 若为首次设置，设置完之后进入主页
+            } else if(intent.extras?.get("data") == SplashActivity.FIRST_SETTING){
+                val intent = Intent(this, HomepageActivity::class.java)
+                getSharedPreferences("setting", MODE_PRIVATE).edit()
+                    .putBoolean("isFirst", false).apply()
+                startActivity(intent)
+                finish()
+            // 非首次设置，直接返回
+            } else {
+                finish()
+            }
+        }
+
+    }
+
+    fun initViewModel() {
         viewModel = SettingViewModel(
             getSharedPreferences("setting", MODE_PRIVATE)!!.getString(NAME, "")!!,
             getSharedPreferences("setting", MODE_PRIVATE)!!.getString(CONSTELLATION, "")!!,
@@ -54,40 +96,8 @@ class SettingActivity : AppCompatActivity() {
         })
 
         viewModel.header.observe(this, Observer { header->
-           Glide.with(this).load(header).error(R.drawable.header).into(headerImage)
+            Glide.with(this).load(header).error(R.drawable.header).into(headerImage)
         })
-
-        headerImage.setOnClickListener {
-            initAlertDialog()
-            dialog?.show()
-            true
-        }
-
-        nameTextView.setOnClickListener {
-            var intent = Intent(this, EditActivity::class.java)
-            startActivityForResult(intent, EDIT_NAME)
-
-        }
-
-        constellationTextView.setOnClickListener {
-            var intent = Intent(this, EditActivity::class.java)
-            startActivityForResult(intent, EDIT_CONSTELLATION)
-        }
-
-        settingButton.setOnClickListener {
-            val sp = getSharedPreferences("setting", MODE_PRIVATE)
-            val string = sp.getString(CONSTELLATION, "")
-            if (string == "") {
-                Toast.makeText(this, "请填写星座", Toast.LENGTH_SHORT).show()
-            } else {
-                val intent = Intent()
-                setResult(RESULT_OK, intent)
-                getSharedPreferences("setting", MODE_PRIVATE).edit()
-                    .putBoolean("isFirst", false).apply()
-                finish()
-            }
-        }
-
     }
 
     private fun requestPermissions() {
@@ -97,7 +107,7 @@ class SettingActivity : AppCompatActivity() {
             // 申请一个（或多个）权限，并提供用于回调返回的获取码（用户定义）
             ActivityCompat.requestPermissions(
                 this, arrayOf(
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    Manifest.permission.READ_EXTERNAL_STORAGE
                 ), 1
             )
         }
@@ -122,6 +132,10 @@ class SettingActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * 在sharedPreference中更改偏好设置
+     */
+
     fun updateSetting(text: String, attribute: String) {
         val editor = getSharedPreferences("setting", MODE_PRIVATE).edit()
         editor.putString(attribute, text)
@@ -131,7 +145,9 @@ class SettingActivity : AppCompatActivity() {
         Log.d("sp", string.toString())
     }
 
-
+    /**
+     * 上传头像弹窗选择
+     */
     fun initAlertDialog() {
         var list = arrayOf<String>("拍照", "从相册中选择")
         dialog = AlertDialog.Builder(this).setTitle("选择上传方式")
@@ -142,6 +158,7 @@ class SettingActivity : AppCompatActivity() {
                             TODO()
                         }
                         CHOOSE_ALBUM -> {
+                            // 系统文件选择器的实现方式
 //                            val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
 //                            intent.addCategory(Intent.CATEGORY_OPENABLE)
 //                            intent.type = "image/*"
@@ -150,6 +167,7 @@ class SettingActivity : AppCompatActivity() {
 //                                "image/*"
 //                            )
 //                            startActivityForResult(intent, CHOOSE_ALBUM)
+                            // 打开相册
                             var intent = Intent(context, AlbumActivity::class.java)
                             startActivityForResult(intent, CHOOSE_ALBUM)
                         }
@@ -158,7 +176,10 @@ class SettingActivity : AppCompatActivity() {
             }).create()
     }
 
-
+    /**
+     *
+     * 个人信息改变后调用被observe的方法
+     */
     override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
         super.onActivityResult(requestCode, resultCode, intent)
         if(resultCode == RESULT_OK) {
