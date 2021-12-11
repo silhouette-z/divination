@@ -13,7 +13,11 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_gravity="center_horizontal"
+<<<<<<< HEAD
         android:layout_marginBottom="30dp"
+=======
+        android:scaleType="centerCrop"
+>>>>>>> abb43fcd60d3c2b481f7e190a856056fc7da2106
         android:id="@+id/headerImage"
         android:src="@drawable/header"/>
     <TextView

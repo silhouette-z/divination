@@ -1,20 +1,17 @@
 package com.me.myapplication.activity
 
 import android.app.Service
-import android.content.Context
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Vibrator
 import android.view.LayoutInflater
 import android.view.View
-import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.me.myapplication.activity.shake.SensorManagerHelper
 import com.me.myapplication.R
-import com.me.myapplication.activity.application.MyApplication.Companion.context
 import com.me.myapplication.activity.shake.closeResultDialog
 import com.me.myapplication.activity.shake.showResultDialog
 import com.me.myapplication.databinding.ActivityShakeBinding

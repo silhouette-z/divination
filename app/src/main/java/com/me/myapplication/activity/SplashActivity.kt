@@ -1,24 +1,36 @@
 package com.me.myapplication.activity
 
+<<<<<<< HEAD
 import android.annotation.SuppressLint
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.*
+=======
+import android.Manifest
+import android.content.Intent
+import android.content.pm.PackageManager
+>>>>>>> abb43fcd60d3c2b481f7e190a856056fc7da2106
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.IBinder
 import android.os.SystemClock
 
 import android.util.Log
+import androidx.core.app.ActivityCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.recyclerview.widget.GridLayoutManager
 import com.me.myapplication.R
 import com.me.myapplication.activity.adapter.CardAdapter
 import com.me.myapplication.activity.model.CardItem
+<<<<<<< HEAD
 
 import kotlinx.android.synthetic.main.activity_splash.*
 
 
+=======
+import kotlinx.android.synthetic.main.activity_splash.*
+
+>>>>>>> abb43fcd60d3c2b481f7e190a856056fc7da2106
 
 class SplashActivity : AppCompatActivity() {
     companion object {
@@ -96,9 +108,11 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        when (requestCode) {
-            FIRST_SETTING -> {
+        if(resultCode == RESULT_OK) {
+            when (requestCode) {
+                FIRST_SETTING -> {
 
+                }
             }
         }
     }
@@ -144,4 +158,30 @@ class SplashActivity : AppCompatActivity() {
         return SystemClock.uptimeMillis() - initTime > WORK_DURATION
     }
 
+<<<<<<< HEAD
+=======
+    private fun requestPermission() {
+        val storagePermissions = arrayOf<String>(Manifest.permission.READ_EXTERNAL_STORAGE)
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(this, storagePermissions, 123)
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        for (i in permissions.indices) {
+            Log.d("permissions:", permissions[i] + "申请结果：" + grantResults[i])
+        }
+    }
+
+
+>>>>>>> abb43fcd60d3c2b481f7e190a856056fc7da2106
 }
