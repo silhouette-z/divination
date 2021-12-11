@@ -48,6 +48,11 @@ class CardAdapter(val cardList: List<CardItem>):RecyclerView.Adapter<CardAdapter
                     val intent = Intent(parent.context, SavePicActivity::class.java)
                     startActivity(parent.context,intent, Bundle())
                 }
+                "测夫妻相"-> {
+                    val intent = Intent(parent.context, VersionActivity::class.java)
+                    startActivity(parent.context,intent, Bundle())
+                }
+
 
             }
         }

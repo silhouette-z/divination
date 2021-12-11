@@ -129,7 +129,8 @@ class SplashActivity : AppCompatActivity() {
             CardItem("每日运势", R.drawable.ic_animal1),
             CardItem("摇一摇", R.drawable.ic_animal2),
             CardItem("每日心情", R.drawable.ic_animal3),
-            CardItem("随机鸡汤", R.drawable.ic_animal4))
+            CardItem("随机鸡汤", R.drawable.ic_animal4),
+            CardItem("测夫妻相", R.drawable.ic_animal5))
     }
 
     /**
