@@ -32,13 +32,12 @@ import java.io.IOException
 import com.airbnb.lottie.LottieAnimationView
 
 import android.annotation.SuppressLint
-
-
+import android.widget.RelativeLayout
 
 
 class SavePicActivity : AppCompatActivity() {
 
-    private var layout_poster: LinearLayout? = null
+    private var layout_poster: RelativeLayout? = null
     private var layout_save: LinearLayout? = null
     private var today_info: TextView? = null
     private var mBitmap: Bitmap? = null
@@ -67,7 +66,7 @@ class SavePicActivity : AppCompatActivity() {
 
         today_info = findViewById<View>(R.id.today_info) as TextView
         click()
-        layout_poster = findViewById<View>(R.id.layout_poster) as LinearLayout
+        layout_poster = findViewById<View>(R.id.layout_poster) as RelativeLayout
         layout_save = findViewById<View>(R.id.layout_save) as LinearLayout
         layout_save!!.setOnClickListener { // 保存海报图片
             savePoster()

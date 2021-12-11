@@ -1,15 +1,13 @@
 package com.me.myapplication.activity
 
-<<<<<<< HEAD
 import android.annotation.SuppressLint
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.*
-=======
+
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
->>>>>>> abb43fcd60d3c2b481f7e190a856056fc7da2106
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.IBinder
@@ -22,15 +20,12 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.me.myapplication.R
 import com.me.myapplication.activity.adapter.CardAdapter
 import com.me.myapplication.activity.model.CardItem
-<<<<<<< HEAD
+
 
 import kotlinx.android.synthetic.main.activity_splash.*
 
-
-=======
 import kotlinx.android.synthetic.main.activity_splash.*
 
->>>>>>> abb43fcd60d3c2b481f7e190a856056fc7da2106
 
 class SplashActivity : AppCompatActivity() {
     companion object {
@@ -158,8 +153,7 @@ class SplashActivity : AppCompatActivity() {
         return SystemClock.uptimeMillis() - initTime > WORK_DURATION
     }
 
-<<<<<<< HEAD
-=======
+
     private fun requestPermission() {
         val storagePermissions = arrayOf<String>(Manifest.permission.READ_EXTERNAL_STORAGE)
         if (ActivityCompat.checkSelfPermission(
@@ -183,5 +177,4 @@ class SplashActivity : AppCompatActivity() {
     }
 
 
->>>>>>> abb43fcd60d3c2b481f7e190a856056fc7da2106
 }
