@@ -123,18 +123,18 @@ class SavePicActivity : AppCompatActivity() {
     }
     //获取权限
     private fun requestPermissions() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-            != PackageManager.PERMISSION_GRANTED
-        ) {
-            // 申请一个（或多个）权限，并提供用于回调返回的获取码（用户定义）
-            ActivityCompat.requestPermissions(
-                this, arrayOf(
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE
-                ), REQUEST_STATE_CODE
-            )
-        } else {
+//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+//            != PackageManager.PERMISSION_GRANTED
+//        ) {
+//            // 申请一个（或多个）权限，并提供用于回调返回的获取码（用户定义）
+//            ActivityCompat.requestPermissions(
+//                this, arrayOf(
+//                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+//                ), REQUEST_STATE_CODE
+//            )
+//        } else {
             saveToLocal(mBitmap)
-        }
+//        }
     }
 
     override fun onRequestPermissionsResult(

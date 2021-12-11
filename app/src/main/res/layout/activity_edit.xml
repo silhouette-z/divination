@@ -17,7 +17,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@drawable/ic_xingzuo"
-            android:layout_marginBottom="30dp"/>
+            />
 
         <EditText
             android:layout_margin="40dp"
