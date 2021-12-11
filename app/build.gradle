@@ -75,4 +75,7 @@ dependencies {
     implementation 'com.tencent:mmkv:1.0.22'
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46'
 
+    //mood
+    implementation 'jp.co.recruit_mp:LightCalendarView:1.0.0'
+
 }

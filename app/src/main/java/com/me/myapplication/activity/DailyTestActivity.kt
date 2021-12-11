@@ -113,7 +113,7 @@ class DailyTestActivity : AppCompatActivity() {
                         if (dailyAstro.all == null) {
                             textView?.text = "您的星星可能走丢了哦~"
                         } else {
-                            textView?.text = "   ${astro}的您今天运势如下:\n\n" +
+                            textView?.text = "${astro}的您今天运势如下:\n\n" +
                                     "${dailyAstro.summary}\n\n" +
                                     "今天总分是${dailyAstro.all}\n" +
                                     "工作指数:${dailyAstro.work}\n" +

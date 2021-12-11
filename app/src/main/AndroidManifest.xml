@@ -24,6 +24,10 @@
             android:exported="true"
             android:theme="@style/Theme.MyApplication" />
         <activity
+            android:name=".activity.MoodActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MyApplication" />
+        <activity
             android:name=".activity.FaceCompareActivity"
             android:exported="true"
             android:theme="@style/Theme.MyApplication" />

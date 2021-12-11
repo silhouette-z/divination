@@ -15,12 +15,12 @@ import com.me.myapplication.R
 import com.me.myapplication.activity.SavePicActivity
 import com.me.myapplication.activity.ShakeActivity
 import com.me.myapplication.activity.DailyTestActivity
-import com.me.myapplication.activity.VersionActivity
 import com.me.myapplication.activity.*
 
 
 
 import com.me.myapplication.activity.model.CardItem
+import com.me.myapplication.activity.MoodActivity
 
 
 class CardAdapter(val cardList: List<CardItem>):RecyclerView.Adapter<CardAdapter.CardViewHolder>() {
@@ -39,8 +39,8 @@ class CardAdapter(val cardList: List<CardItem>):RecyclerView.Adapter<CardAdapter
                     startActivity(parent.context,intent, Bundle())
                 }
                 "每日心情"-> {
+                    val intent = Intent(parent.context, MoodActivity::class.java)
 
-                    val intent = Intent(parent.context, FaceCompareActivity::class.java)
 
                     startActivity(parent.context,intent, Bundle())
                 }
@@ -49,7 +49,8 @@ class CardAdapter(val cardList: List<CardItem>):RecyclerView.Adapter<CardAdapter
                     startActivity(parent.context,intent, Bundle())
                 }
                 "测夫妻相"-> {
-                    val intent = Intent(parent.context, VersionActivity::class.java)
+
+                    val intent = Intent(parent.context, FaceCompareActivity::class.java)
                     startActivity(parent.context,intent, Bundle())
                 }
 

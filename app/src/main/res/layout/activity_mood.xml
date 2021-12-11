@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/screen_0"
+    tools:context=".activity.MoodActivity">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/month_title"
+        android:textSize="20dp"
+        android:paddingTop="10dp"
+        android:paddingLeft="15dp"
+        android:textColor="@color/colorAccent"/>
+
+    <jp.co.recruit_mp.android.lightcalendarview.LightCalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        android:layout_below="@+id/month_title"
+        app:lcv_dayTextSize="18sp"
+        app:lcv_weekDayTextSize="18sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/moodTop"
+        android:layout_below="@+id/calendarView"
+        android:textSize="18dp"
+        android:paddingTop="10dp"
+        android:paddingLeft="20dp"
+        android:text="今天的心情是什么颜色的呢"
+        android:visibility="gone"/>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="Layouts"
+        android:paddingTop="10dp"
+        android:orientation="vertical"
+        android:layout_below="@+id/moodTop"
+        android:id="@+id/moodChoose"
+        android:paddingLeft="15dp"
+        android:visibility="gone">
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:id="@+id/radioButton1"
+            android:text="快乐的红色"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp" />
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:id="@+id/radioButton2"
+            android:text="就那样吧"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp" />
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:id="@+id/radioButton3"
+            android:text="一言难尽"
+            android:textColor="@color/grey"
+            android:textSize="18sp" />
+
+    </RadioGroup>
+
+
+
+</RelativeLayout>

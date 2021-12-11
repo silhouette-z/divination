@@ -48,6 +48,21 @@
         <entry key="..\:/Users/Silhouette/AndroidStudioProjects/divination-master/app/src/main/res/layout/card_item.xml" value="0.14108409321175278" />
         <entry key="..\:/Users/Silhouette/AndroidStudioProjects/divination-master/app/src/main/res/layout/nav_header.xml" value="0.14108409321175278" />
         <entry key="..\:/Users/Silhouette/AndroidStudioProjects/divination-master/app/src/main/res/layout/result_card.xml" value="0.29010416666666666" />
+        <entry key="..\:/Users/Silhouette/AndroidStudioProjects/working/divination/app/src/main/res/drawable-xhdpi/bitmap_bg.xml" value="0.16979166666666667" />
+        <entry key="..\:/Users/Silhouette/AndroidStudioProjects/working/divination/app/src/main/res/drawable/edit_background.xml" value="0.16979166666666667" />
+        <entry key="..\:/Users/Silhouette/AndroidStudioProjects/working/divination/app/src/main/res/drawable/ic_animal1.xml" value="0.16979166666666667" />
+        <entry key="..\:/Users/Silhouette/AndroidStudioProjects/working/divination/app/src/main/res/drawable/ic_animal3.xml" value="0.30092592592592593" />
+        <entry key="..\:/Users/Silhouette/AndroidStudioProjects/working/divination/app/src/main/res/drawable/ic_bookmark_24dp.xml" value="0.16979166666666667" />
+        <entry key="..\:/Users/Silhouette/AndroidStudioProjects/working/divination/app/src/main/res/drawable/ic_launcher_background.xml" value="0.16979166666666667" />
+        <entry key="..\:/Users/Silhouette/AndroidStudioProjects/working/divination/app/src/main/res/drawable/ic_pay.xml" value="0.16979166666666667" />
+        <entry key="..\:/Users/Silhouette/AndroidStudioProjects/working/divination/app/src/main/res/drawable/ic_setting.xml" value="0.30092592592592593" />
+        <entry key="..\:/Users/Silhouette/AndroidStudioProjects/working/divination/app/src/main/res/drawable/shape_card.xml" value="0.30153846153846153" />
+        <entry key="..\:/Users/Silhouette/AndroidStudioProjects/working/divination/app/src/main/res/drawable/shape_fillet_translucent.xml" value="0.30153846153846153" />
+        <entry key="..\:/Users/Silhouette/AndroidStudioProjects/working/divination/app/src/main/res/layout/activity_edit.xml" value="0.15364583333333334" />
+        <entry key="..\:/Users/Silhouette/AndroidStudioProjects/working/divination/app/src/main/res/layout/activity_face_compare.xml" value="0.15364583333333334" />
+        <entry key="..\:/Users/Silhouette/AndroidStudioProjects/working/divination/app/src/main/res/layout/activity_homepage.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/Silhouette/AndroidStudioProjects/working/divination/app/src/main/res/layout/activity_load.xml" value="0.15364583333333334" />
+        <entry key="..\:/Users/Silhouette/AndroidStudioProjects/working/divination/app/src/main/res/layout/activity_mood.xml" value="0.14947916666666666" />
       </map>
     </option>
   </component>
