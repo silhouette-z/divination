@@ -1,12 +1,10 @@
 package com.me.myapplication.activity
 
 import android.Manifest
-import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -20,8 +18,8 @@ import kotlinx.android.synthetic.main.activity_setting.*
 
 class SettingActivity : AppCompatActivity() {
     companion object {
-        const val TAKE_PHOTO = 0
-        const val CHOOSE_ALBUM = 1
+        const val TAKE_PHOTO = 1
+        const val CHOOSE_ALBUM = 0
         const val EDIT_NAME = 2
         const val EDIT_CONSTELLATION = 3
         const val EDIT_HEADER = 4
@@ -149,14 +147,15 @@ class SettingActivity : AppCompatActivity() {
      * 上传头像弹窗选择
      */
     fun initAlertDialog() {
-        var list = arrayOf<String>("拍照", "从相册中选择")
+       // var list = arrayOf<String>("拍照", "从相册中选择")
+        var list = arrayOf<String>("从相册中选择")
         dialog = AlertDialog.Builder(this).setTitle("选择上传方式")
             .setItems(list, object : DialogInterface.OnClickListener {
                 override fun onClick(dialog: DialogInterface?, which: Int) {
                     when (which) {
-                        TAKE_PHOTO -> {
-                            TODO()
-                        }
+//                        TAKE_PHOTO -> {
+//                            TODO()
+//                        }
                         CHOOSE_ALBUM -> {
                             // 系统文件选择器的实现方式
 //                            val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
