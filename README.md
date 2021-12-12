@@ -70,6 +70,6 @@
 
 *Tips:相似度计算模块运行还需要一个模型文件，如果需要请下载以下文件并将其安放在assets目录下，即可正常运行。*
 
-*链接:https://pan.baidu.com/s/1R83B2AjskEXx7i2_oPDTwg *
+*链接:*https://pan.baidu.com/s/1R83B2AjskEXx7i2_oPDTwg
 *提取码:612b*
 
